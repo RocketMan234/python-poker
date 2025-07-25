@@ -10,7 +10,9 @@ class Deck:
     def shuffle(self):
         random.shuffle(self.cards)
 
-    def deal(self):
-        if len(self.cards) > 0:
-            return self.cards.pop()
-        return None
+    def deal(self, num_cards):
+        if num_cards > len(self.cards):
+            return None
+        dealt_cards = self.cards[:num_cards]
+        self.cards = self.cards[num_cards:]
+        return dealt_cards
